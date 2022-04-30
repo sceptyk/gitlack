@@ -1,0 +1,40 @@
+{
+  "name": "Gitlack Extension",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoWEUUvDn1DSDYRZaMe9vvIahbwBvT6Zfe4UYhy6FMvvLDdTVeLebWXV2Aufft6HBhQhAUk8Nl5YnzVuofx3o+VoFgg49+Elcox8xvbEDxe99x5rpCZdsQyA9st79CKsLvubbowdXrEu6Tq0xDASMGDutSWKGm/hCflW5ymykNeCArZyUvbEdsh24HQVneRml3fQNcquzd0MzoU8gDkZJAiVT/oOjA4tizEBF3SYdqQI1wi3HLOZwLNCGsin4sPaCxtYfQb82LGikFn9v3TS+hj2fwHOZNNWbRCHbX2oGv6pj+wOtTMPdzyQKYYHJzXHBHTTSrBaYRF9sYHT/WyYZdwIDAQAB",
+  "description": "Automated code review requests from MR page",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "https://slack.com/",
+    "http://localhost/gitlack/*"
+  ],
+  "background": {
+    "scripts": ["/scripts/background.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/rating16.png",
+      "32": "images/rating32.png",
+      "64": "images/rating64.png",
+      "128": "images/rating128.png"
+    }
+  },
+  "icons": {
+    "16": "images/rating16.png",
+    "32": "images/rating32.png",
+    "64": "images/rating64.png",
+    "128": "images/rating128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gitlab.inschool.visma.net/*/merge_requests/*"],
+      "js": ["/scripts/manager.js"]
+    }
+  ],
+  "options_page": "/views/options.html"
+}
